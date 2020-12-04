@@ -9,9 +9,27 @@ class PolyTreeNode
 
     def parent=(parent_node)
         return if self.parent == parent_node
-        #if node already has parent(p_old), then access p_old and remove self from p_old.children
+        #if node already has parent(p_old), then 
+        #access p_old and remove self from p_old.children
+        if self.parent != nil
+            self.parent.children.delete(self)
+        end
         @parent = parent_node
         self.parent.children << self unless self.parent == nil
     end
 
+    def add_child(child)
+        child.parent=self
+    end
+
+    def remove_child(child)
+        raise_error if !self.children.include?(child)
+        child.parent = nil
+    end
+
+    def dfs(target)
+        
+    end
+
 end
+
