@@ -45,6 +45,12 @@ class KnightPathFinder
     #at each position, we need to call polytreenode to create a new instance of node
     #parent.addchild(newnode)
 
+    ##[ root ]
+    #/      \
+    #[NN      NN]
+    #/ \        / \
+    #[N  N       N   N]
+
     def new_move_positions(pos)
         possible_moves = KnightPathFinder.valid_moves(pos)
         possible_moves.reject! {|a_pos| @considered_position.include?(a_pos)}
