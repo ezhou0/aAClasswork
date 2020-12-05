@@ -1,6 +1,8 @@
 require "./lib/00_tree_node.rb"
 
 class KnightPathFinder
+    attr_reader :position 
+    attr_accessor :considered_position, :root_node
     MOVES = [[2,1],[2,-1],[1,2],[1,-2],[-1,-2],[-1,2],[-2,1],[-2,-1]]
     def self.valid_moves(position)
         valid_mvs = []
@@ -24,20 +26,39 @@ class KnightPathFinder
 
     def build_move_tree
         self.root_node = PolyTreeNode.new(position)
+        queue = [self.root_node]
+        until queue.empty?
+            node = queue.shift
+            possibilities = new_move_positions(node.value) #this is an array
+            possibilities.each do |option| #each option is a position
+                new_node = PolyTreeNode.new(option)
+                node.add_child(new_node)
+                queue << new_node #re-populate the queue
+            end
+        end
     end
+
+    ## root < created this instance of a root node
+    #/      \
+    #NN      NN
+    #iterate thru the possible positions
+    #at each position, we need to call polytreenode to create a new instance of node
+    #parent.addchild(newnode)
 
     def new_move_positions(pos)
         possible_moves = KnightPathFinder.valid_moves(pos)
         possible_moves.reject! {|a_pos| @considered_position.include?(a_pos)}
         possible_moves.each {|a_pos| @considered_position << a_pos }
-
+        possible_moves
     end
 
-    private
-    attr_accessor :considered_position
+   
 
 end
 
 kpf = KnightPathFinder.new([0, 0])
+kpf.build_move_tree # => [[0, 0], [2, 1]]
+p kpf.considered_position.length # => [[0, 0], [2, 1], [3, 3]]
+p kpf.considered_position
 
 
