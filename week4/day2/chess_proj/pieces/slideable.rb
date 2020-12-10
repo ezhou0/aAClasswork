@@ -16,6 +16,11 @@ module Slideable
     end
 
     def moves
+        moves = []
+        move_dirs.each do |x, y|
+            moves += grow_unblocked_moves_in_dir(x, y)
+        end
+        moves
         #stores moves in an array
         #iteratues thru all possible piece specific moves
         #selects those moves from unblocked moves
@@ -23,6 +28,7 @@ module Slideable
 
     private
     def moves_dirs
+        raise "Error - not implemented"
         #this is implemented by the specific piece, telling us what it can and cannot do
     end
     
@@ -33,6 +39,22 @@ module Slideable
         cur_y = pos[1]
         moves = []
 
+        loop do
+            cur_x = cur_x + dx
+            cur_y = cur_y + dy
+            position = [cur_x, cur_y]
+
+            break unless board.valid_move?(position) 
+            
+            if board.empty?(position)
+               moves << position
+            elsif board[pos].color != color
+                moves << position
+            end
+            # implement case if position is empty or is occupied(same color?)
+
+        end
+        return moves
         #a loop here
         #iterate and keep adding dx dy to pos and keep updating curx,y, 
         #shoveling them into moves every iteration
@@ -47,9 +69,6 @@ module Slideable
         #NNRNN
         ##XNX#
     end
-
-
-
 
 end
 
