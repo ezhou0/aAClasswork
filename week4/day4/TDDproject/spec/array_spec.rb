@@ -37,4 +37,11 @@ describe Array do
 
         end
     end
+
+    describe "#stock_picker" do
+        it "should return the most profitable buy/sell combo" do
+            stocks = [10,12,9,13,15]
+            expect(stocks.stock_picker).to eq([2,4])
+        end
+    end
 end
