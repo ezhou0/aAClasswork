@@ -58,4 +58,11 @@ describe Hanoi do
         end
     #     # it "should always add a disk to empty tower"
     end
+
+    describe "#won?" do
+        hanoi = Hanoi.new(3,[[3,2,1],[],[]])
+        it "should return true if any tower has all disks" do
+            expect(hanoi.won?).to be true
+        end
+    end
 end
