@@ -61,7 +61,7 @@ end
 
 
 def hash_two_sum_2?(array, target)
-    hash = Hash.new(0)
+    hash = Hash.new
 
     array.each do |el|
         return true if hash[target - el] == true
