@@ -62,6 +62,7 @@ class LinkedList
   end
 
   def include?(key)
+    any? { |node| node.key == key }
   end
 
   def append(key, val)
