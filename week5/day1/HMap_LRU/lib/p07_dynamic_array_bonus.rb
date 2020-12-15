@@ -32,9 +32,11 @@ class DynamicArray
   def initialize(capacity = 8)
     @store = StaticArray.new(capacity)
     @count = 0
+    @start_idx = 0
   end
 
   def [](i)
+    self[self.count]
   end
 
   def []=(i, val)
@@ -45,9 +47,12 @@ class DynamicArray
   end
 
   def include?(val)
+    any? {|ele| ele == val}
   end
 
   def push(val)
+    self.store[(self.start_idx + self.count) % capacity] = val
+    count += 1
   end
 
   def unshift(val)
