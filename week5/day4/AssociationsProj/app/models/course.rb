@@ -13,6 +13,13 @@ class Course < ApplicationRecord
         primary_key: :id,
         foreign_key: :prereq_id,
         class_name: 'Course'
+    
+    has_many :postrequisite,
+        primary_key: :id,
+        foreign_key: :prereq_id,
+        class_name: 'Course'
+
+
     has_many :enrollments,
         primary_key: :id,
         foreign_key: :course_id,
