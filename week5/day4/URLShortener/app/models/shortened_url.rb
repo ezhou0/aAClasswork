@@ -31,11 +31,21 @@ class ShortenedUrl < ApplicationRecord
         )
     end
 
+
     #submitter and submitted urls associations
     belongs_to :submitter,
         primary_key: :id,
         foreign_key: :submitter_id,
         class_name: :User
+
+    has_many :visits,
+        primary_key: :id,
+        foreign_key: :shortened_url_id,
+        class_name: :Visit
+
+    has_many :visitors,
+        through: :visits,
+        source: :Visitor
 
 
 end
