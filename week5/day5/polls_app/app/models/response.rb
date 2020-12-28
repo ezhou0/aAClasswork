@@ -13,8 +13,7 @@ class Response < ApplicationRecord
         through: :answer_choice,
         source: :question
 
-    validate :not_duplicate_response, unless: -> { answer_choice.nil? }
-    validate :respondent_is_not_poll_author, unless: -> { answer_choice.nil? }
+
     
     def sibling_responses
     binds = { answer_choice_id: self.answer_choice_id, id: self.id }
