@@ -1,0 +1,11 @@
+  [1m[35m (324.0ms)[0m  [1m[35mCREATE DATABASE "RouteControllerProj_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (389.2ms)[0m  [1m[35mCREATE DATABASE "RouteControllerProj_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2020-12-29 17:04:55 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Edwin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Edwin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb (65.5ms)
+Completed 200 OK in 118ms (Views: 84.5ms | ActiveRecord: 0.0ms)
+
+
