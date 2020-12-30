@@ -1,6 +1,12 @@
 class ArtworksController < ApplicationController
     def index
-        render json: Artwork.all
+        debugger
+        if params.has_key?(:artist_id)
+            artwork = Artwork.where(artist_id: params[:artist_id])
+        else
+            artwork = Artwork.all
+        end
+        render json: artwork
     end
 
     def create
