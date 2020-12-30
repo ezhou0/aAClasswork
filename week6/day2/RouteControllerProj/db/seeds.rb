@@ -13,7 +13,7 @@ user4 = User.create(username: 'goya')
 artwork1 = Artwork.create(title: "blue no 3", img_url: "google.com", artist_id: user3.id)
 artwork2 = Artwork.create(title: "the 3rd of may 1808", img_url: "yahoo.com", artist_id: user4.id)
 as1 = ArtworkShare.create(artwork_id: artwork1.id, viewer_id: user1.id)
-as2 = ArtworkShare.create(artwork_id: artwork1.id), viewer_id: user2.id)
-as3 = ArtworkShare.create(artwork_id: artwork2.id), viewer_id: user2.id)
+as2 = ArtworkShare.create(artwork_id: artwork1.id, viewer_id: user2.id)
+as3 = ArtworkShare.create(artwork_id: artwork2.id, viewer_id: user2.id)
 
 
