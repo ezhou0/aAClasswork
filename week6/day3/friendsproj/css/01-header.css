@@ -1,16 +1,16 @@
 /* PHASE 1: Header */
 
 body{
-    font-family: 'Merriweather', serif;
+    font-family: "Merriweather", serif;
     font-size: 16px;
     font-weight: 400 ;
     background: #eee;
 }
 
 .header{
-  background: #f00;
+  background: purple;
   color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid white;
 }
 .header a {
   display: block;
@@ -30,6 +30,11 @@ body{
   border-right: 1px solid #ccc;
   font-weight: 700;
 }
+
+.header-logo:hover {
+  background: #000;
+}
+
 .header-list {
   display: flex;
 }
