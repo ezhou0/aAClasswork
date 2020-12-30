@@ -11,7 +11,7 @@ class ArtworkSharesController < ApplicationController
         if share.save
             render json: share
         else
-            render json: share.errors.fulll_messages, status: :unprocessable_entity
+            render json: share.errors.full_messages, status: :unprocessable_entity
         end
     end
 
