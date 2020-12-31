@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_231333) do
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["img_url"], name: "index_artworks_on_img_url", unique: true
-    t.index ["title", "artist_id"], name: "index_artworks_on_title_and_artist_id", unique: true
+    t.index ["title", "artist_id"], name: "index_artworks_on_title_and_artist_id"
   end
 
   create_table "changes", force: :cascade do |t|
