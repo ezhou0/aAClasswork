@@ -1,0 +1,41 @@
+
+<!-- our variable is cat -->
+
+<form action="/cats" method="POST">
+  <p>Name:
+    <input type="text"
+           name="cat[name]"
+           id="cat_name"
+           value="<%=@cat.name%>"
+          />
+  </p>
+  <p>Color:
+    <select name="cat[color]" id="cat_color">
+    <option disable selected>select a color:</option>
+      <% Cat::CAT_COLORS.each do |color| %>
+        <option value=<%="#{color}"%>><%=color%></option>
+      <% end %>
+    </select>
+  </p>
+  <p>Sex:
+    <input type="radio"
+           name="cat[sex]"
+           class=cat_sex
+           value="M"
+           />M
+    <input type="radio" name="cat[sex]" value="F"/>F
+    <input type="radio" name="cat[sex]" value="O"/>Other
+  </p>
+  <p>Birth Date:
+    <input type="date"
+           name="cat[birth_date]"
+           id="cat_birth_date"
+           value="<%= @cat.birth_date %>"
+           /> 
+  </p>
+  <p>Description:
+   <textarea name="cat[description]" cols="40", rows="15">
+   </textarea>
+  </p>
+  <input type="submit"/>
+  </form>

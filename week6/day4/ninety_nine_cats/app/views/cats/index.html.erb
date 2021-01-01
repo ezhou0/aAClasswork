@@ -1,0 +1,14 @@
+
+<h1>welcome, to the index page!</h1>
+
+<% @cats.each do |cat| %>
+  <ul>
+    <li> id:          <%= cat.id          %> </li>
+    <li> name:        <%= cat.name        %> </li>
+    <li> color:       <%= cat.color       %> </li>
+    <li> sex:         <%= cat.sex         %> </li>
+    <li> birth date:  <%= cat.birth_date  %> </li>
+    <li> description: <%= cat.description %> </li>
+    <!--<= render "cat", { cat: cat } > -->
+  </ul>
+<% end %>
