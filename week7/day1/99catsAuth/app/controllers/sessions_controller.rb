@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
+
+    before_action :already_signed_in
     def create
         @user = User.find_by_credentials(params[:user][:username],params[:user][:password])
 
         if @user 
+            login_user!(@user)
             redirect_to cat_url
         else
             render :new
