@@ -1,0 +1,43 @@
+<% action_url = album.persisted? ? album_url(album) : albums_url %>
+<% http_method = album.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%=action_url%>" method="POST">
+<input type="hidden" name="_method" value="<%=http_method%>">
+<input 
+  type="hidden" 
+  name="authenticity_token" 
+  value="<%=form_authenticity_token%>">
+  <label>Album Name</label>
+  <input type="text" name="album[name]" value="<%=band.name%>">
+
+
+<!--
+drop down of which band recorded
+    1. label for band names
+    2. iterate thru your column of 
+    band names and put each one as an option
+-->
+    <label>Band Name</label>
+    <select name="album[band_id]">
+        <%Band.all.each do |band|%>
+        <option value="<%= band.id %>">
+                <%= band.name %>
+        </option>
+        <%end%>
+    </select>
+
+<!--
+regular input year,
+
+radio live or not live
+  -->
+
+
+
+
+
+
+  <input type="submit">
+
+
+</form>

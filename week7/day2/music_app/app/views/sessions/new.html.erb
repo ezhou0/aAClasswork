@@ -1,0 +1,18 @@
+<h1>SIGN IN</h1>
+<img src="https://wallpaperaccess.com/full/3047333.jpg">
+<form action=<%= session_url%> method="POST">
+<input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <label>Email</label>
+    <input type="text" name="user[email]" value="">
+  <br>
+    <label>Password</label>
+    <input type="password" name="user[password]">
+  <br>
+  <input type="submit" value="SIGN IN">
+</form>
+
+
+  
