@@ -1,0 +1,22 @@
+.section-nav {
+  display: flex;
+  justify-content: center;
+  
+  ul {
+    display: flex;
+    padding: 10px 0px;
+  }
+  
+  a {
+    text-transform: uppercase;
+  }
+
+  li {
+    margin-left: 10px;
+    font-family: $sans-serif;
+  }
+
+  li:hover {
+    background-color: $light-gray;
+  }
+}

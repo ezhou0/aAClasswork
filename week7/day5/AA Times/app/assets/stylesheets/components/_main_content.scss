@@ -1,0 +1,116 @@
+.main-content {
+    display: grid;
+    grid-template-columns: 66.66% 33.33%;
+
+	margin-top: 10px;
+
+	header {
+		font-weight: bold;
+	}
+}
+
+
+.main-story {
+
+    display: grid;
+    grid-template-columns: 33.33% 66.66%;
+    padding: 20px;
+	margin-top: 10px;
+
+	.col-1-3 {
+        padding: 20px;
+        margin-bottom: 20px;
+	}
+
+	ul {
+		list-style: initial;
+		padding-left: 15px;
+
+		li{
+			margin: 10px 0;
+			line-height: 1.5;
+		}
+	}
+}
+
+.byline {
+	color: $gray;
+	margin: 4px 1px;
+	font-family: $serif;
+	font-weight: 400;
+	font-size: 11px;
+}
+
+/* 
+	Comments Link with Blue Square
+*/
+
+.comments {
+	color: #326891;
+	font-family: $sans-serif;
+	font-size: 10px;
+	vertical-align: bottom;
+}
+
+iframe {
+	margin-bottom: 10px;
+}
+
+article {
+	margin: 10px 0;
+
+	hr {
+		width: 50%;
+		color: $gray;
+	}
+}
+
+.kicker {
+	text-transform: uppercase;
+	font-size: 10px;
+}
+
+.opinion {
+    margin-top: 10px;
+    padding-right: 20px;
+
+    // Now lets create a grid with three rows and two columns 
+    // where the the first row is 5px high, the third row is 60% 
+    // of the height, the second row fills the rest of the space 
+    // and the two columns split the graph in half.
+    grid-template-rows: 5px, 1fr,  60%;
+    grid-template-columns: 50% 50%;
+	.col-1-2:first-child {
+		padding-right: 20px;
+	}
+	
+	a:first-child{
+        grid-column: 1 / 3;
+	}
+
+	.opinion-sign-up {
+        grid-column: 1 / 3;
+		center{
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.opinions-list {
+	list-style: initial;
+	padding-left: 15px;
+	font-weight: bold;
+    font-size: 10px;
+    
+
+	li {
+		margin: 5px 0;
+	}
+}
+
+@media all and (max-width: 1000px) {
+  .opinion, .main-story, .main-content{
+    width: 100%;
+    display: block;
+  }
+}
