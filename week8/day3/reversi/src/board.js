@@ -9,6 +9,13 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  let grid = [];
+  for(let i = 0; i < 8; i++ ){ //row 8x8
+    let row = new Array(8)//array of length 8
+    grid.push(row)
+  }
+  
+
 }
 
 /**
