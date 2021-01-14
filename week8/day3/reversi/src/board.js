@@ -84,15 +84,16 @@ Board.prototype.isOccupied = function (pos) {
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
   let nextpos = [pos[0] + dir[0], pos[1] + dir[1]];
-  piecesToFlip = [];
-  piecesToFlip.push(pos);
+  if(!piecesToFlip){
+    piecesToFlip = [];
+  }else{
+    piecesToFlip.push(pos);
+  }
   if (!this.isValidPos(nextpos)){
     return [];
   } else if (!this.isOccupied(nextpos)){
     return [];
   } else if (this.isMine(nextpos, color)){
-    return [];
-  } else if {
     return piecesToFlip; 
   } else {
     return this._positionsToFlip(nextpos, color, dir, piecesToFlip);
@@ -107,6 +108,19 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  if(this.isOccupied(pos)){
+    return false;
+  }
+  // iterate thru the directions array and put a 
+  //direction and repeatedly call positions to flip using every direction
+  for (let i = 0; i < Board.DIRS.length; i++){
+    let arr = this._positionsToFlip(pos, color, Board.DIRS[i])
+    if (arr.length != 0){
+      return true;
+    }
+  }
+  return false
+
 };
 
 /**
@@ -116,6 +130,13 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  //throw error if invalid move
+  //call positions to flip --> iterate thru all directions
+    //flip all those in a certain direction calling .flip if we decide to place there
+  //this.grid[pos] = Piece.new(color)
+  if (this.validMove(pos, color)){
+
+  }
 };
 
 /**
