@@ -133,9 +133,18 @@ Board.prototype.placePiece = function (pos, color) {
   //throw error if invalid move
   //call positions to flip --> iterate thru all directions
     //flip all those in a certain direction calling .flip if we decide to place there
-  //this.grid[pos] = Piece.new(color)
-  if (this.validMove(pos, color)){
-
+  //this.grid[pos] = new Piece(color)
+  if (!this.validMove(pos, color)){
+    throw new Error('Invalid move!');
+  } 
+  this.grid[pos[0]][pos[1]] = new Piece(color);
+  let piecesToFlip = [];
+  for (let i = 0; i < Board.DIRS.length; i++) {
+    piecesToFlip = piecesToFlip.concat(this._positionsToFlip(pos, color, Board.DIRS[i]));
+  }
+  for (let i = 0; i < piecesToFlip.length; i++) {
+    this.getPiece(piecesToFlip[i]).flip(); 
+    
   }
 };
 
@@ -144,12 +153,22 @@ Board.prototype.placePiece = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let possib_moves = [];
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
+      if (this.validMove([i,j], color)) {
+        possib_moves.push([i,j]);
+      }
+    }
+  }
+  return possib_moves;
 };
 
 /**
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+  return this.validMoves(color).length !== 0;
 };
 
 
@@ -159,6 +178,7 @@ Board.prototype.hasMove = function (color) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  return !this.hasMove('black') && !this.hasMove('white');
 };
 
 
@@ -168,6 +188,18 @@ Board.prototype.isOver = function () {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
+  for (let i = 0; i < 8; i++) {
+    let row = "";
+    for (let j = 0; j < 8; j++) {
+      let pos = [i,j];
+      if (this.getPiece(pos)){
+        row += this.getPiece(pos).toString(); 
+      } else {
+        row += "_";
+      }
+    }
+    console.log(row);
+  }
 };
 
 
