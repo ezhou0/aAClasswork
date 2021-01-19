@@ -16,10 +16,8 @@ function args_sum2(...num){
     }
     return sum;
 }
-// console.log(args_sum2(1, 2, 3, 4) === 10);
-// console.log(args_sum2(1, 2, 3, 4, 5) === 15);
-
-
+console.log(args_sum2(1, 2, 3, 4) === 10);
+console.log(args_sum2(1, 2, 3, 4, 5) === 15);
 
 class Cat {
     constructor(name) {
@@ -32,11 +30,14 @@ class Cat {
     }
 }
 
-Function.prototype.myBind = function(){
+Function.prototype.myBind = function(ctx){
+    //arguments does NOT access myBind's arguments... we have to find a new way
+
     let that = this;
-    return function daf{
-        that.apply
-    }
+    let args =  Array.from(arguments).slice(1);
+    return function daf(){
+        that.apply(ctx, args);
+    };
 };
 
 class Dog {
