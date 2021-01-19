@@ -108,15 +108,37 @@ Function.prototype.curry = function(numArgs){
     return function curriedfunction(num){
         arg.push(num);
         if(arg.length === numArgs){
-            total = 0;
-            for (let i = 0; i < numArgs; i++) {
-                total += arg[i];
-            }
-            return total; 
+
+            return that.apply(null, arg);       //IS NULL CORRECT? yes, because we don't call this in showArguments
         }
         return curriedfunction;
     };
-    return curriedfunction;
+    // return curriedfunction;     //not necssary
 };
 
-console.log([5,30,20,1].curry(4));
+function showArguments() {
+    let args = [];
+    for (let i = 0; i < arguments.length; i++) {
+        args.push(arguments[i]);
+    }
+    return args;
+    // alert($A(arguments).join(', '));
+}
+
+// console.log(showArguments.curry(3)(4)(5)(6));
+
+Function.prototype.currySpread = function (numArgs) {
+    let arg = [];
+    let that = this;
+    return function curriedfunction(num) {
+        arg.push(num);
+        if (arg.length === numArgs) {
+
+            return that(...arg);
+        }
+        return curriedfunction;
+    };
+    // return curriedfunction;     //not necssary
+};
+
+console.log(showArguments.currySpread(3)(4)(5)(6));
