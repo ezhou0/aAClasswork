@@ -15,22 +15,25 @@
 Function.prototype.inherits = function(ctx){
   function Surrogate(){}
   Surrogate.prototype = ctx.prototype;
-  this.prototype = new Surrogate;
+  this.prototype = new Surrogate();
   this.prototype.constructor = this;
-}
+};
+Function.prototype.inherits2 = function (ctx) { //cannot use object.create on assessement, must use surrogate
+    this.prototype = Object.create(ctx.prototype);
+    this.prototype.constructor = this;
+};
   
-function MovingObject() { 
-  this.speak = console.log('i move');  
-}
+function MovingObject() {}
+MovingObject.prototype.speak = function(){
+    console.log('i move');
+};
 
 function Ship() { }
-Ship.inherits(MovingObject);
+Ship.inherits2(MovingObject);
 
 function Asteroid() { }
-Asteroid.inherits(MovingObject);
+Asteroid.inherits2(MovingObject);
 
-// let asteroid1 = new Asteroid;
-let movingObject = new MovingObject;
-// console.log();
-// console.log(asteroid1);
-// asteroid1.speak;
+let asteroid1 = new Asteroid();
+let movingObject = new MovingObject();
+asteroid1.speak();
