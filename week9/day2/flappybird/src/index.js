@@ -2,8 +2,7 @@ import FlappyBird from './game';
 // import Game from './game'; 
 
 const canvas = document.getElementById('bird-game');
-new FlappyBird(canvas).restart();
-
+new FlappyBird(canvas);
 
 
 // Finally, it's time to see some color on that canvas! You need to do a few final things to make this happen:
