@@ -1,0 +1,15 @@
+.tile{
+    border-width: 5px;
+}
+
+.flagged{
+    border-style: outset;
+}
+
+.bombed{
+    border-style: outset;
+}
+
+.explored{
+    border-style: inset;    
+}
