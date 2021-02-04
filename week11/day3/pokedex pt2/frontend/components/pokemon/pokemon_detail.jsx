@@ -11,4 +11,8 @@ class PokemonDetail extends React.Component {
         super(props);
     }
 
+    render(){
+        
+    }
+    
 }
