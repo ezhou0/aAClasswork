@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-      helper_method :current_user, :logged_in?
+      
+  helper_method :current_user, :logged_in?
 
   private
 
@@ -30,5 +31,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-end
+
 end
